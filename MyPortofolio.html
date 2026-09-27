@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Toqa Gamal Mohamed | Software / Hardware Tester</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --bg: #fcfaf9;
+            --surface: #ffffff;
+            --surface-soft: #f8f1f5;
+
+            --ink: #241f29;
+            --muted: #716a75;
+
+            --burgundy: #6b3045;
+            --plum: #58405f;
+
+            --pink: #c9829b;
+            --lavender: #b9add3;
+
+            --soft-pink: #f5e9ee;
+            --soft-lavender: #f0ecf7;
+
+            --line: #e9e1e7;
+
+            --shadow:
+                0 20px 60px rgba(72, 45, 62, 0.08);
+
+            --radius-lg: 28px;
+            --radius-md: 18px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 90% 5%,
+                    rgba(185, 173, 211, 0.18),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 5% 30%,
+                    rgba(201, 130, 155, 0.10),
+                    transparent 22%
+                ),
+                var(--bg);
+
+            color: var(--ink);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        ::selection {
+            background: var(--pink);
+            color: white;
+        }
+
+
+        /* =========================================================
+           SVG ICONS
+        ========================================================= */
+
+        .icon {
+            width: 19px;
+            height: 19px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(252, 250, 249, 0.88);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(233, 225, 231, 0.8);
+        }
+
+        .nav-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+
+            min-height: 74px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid var(--burgundy);
+            border-radius: 50%;
+
+            display: grid;
+            place-items: center;
+
+            color: var(--burgundy);
+
+            font-family: "Playfair Display", serif;
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--burgundy);
+
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--burgundy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           GENERAL
+        ========================================================= */
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+            padding: 110px 0;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+            color: var(--burgundy);
+
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--pink);
+        }
+
+        .section-title {
+            max-width: 720px;
+
+            font-family: "Playfair Display", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.08;
+
+            letter-spacing: -0.025em;
+        }
+
+        .section-intro {
+            max-width: 650px;
+
+            margin-top: 20px;
+
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: calc(100vh - 74px);
+
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            padding-top: 80px;
+            padding-bottom: 90px;
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 25px;
+
+            color: var(--burgundy);
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: var(--pink);
+
+            box-shadow:
+                0 0 0 5px var(--soft-pink);
+        }
+
+        .hero h1 {
+            max-width: none;
+            white-space: nowrap;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(32px, 4vw, 54px);
+            line-height: 1;
+            letter-spacing: -0.035em;
+            color: #111111;
+        }
+
+        @media (max-width: 700px) {
+
+            .hero h1 {
+                white-space: normal;
+                font-size: 40px;
+            }
+        }
+        .hero h1 span {
+            color: #111111;
+        }
+
+        .hero-role {
+            margin-top: 24px;
+            max-width: 760px;
+            font-size: clamp(44px, 5.8vw, 76px);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: -0.045em;
+            color: var(--ink);
+        }
+
+        .hero-role strong {
+            color: var(--burgundy);
+        }
+
+        .hero-description {
+            max-width: 590px;
+
+            margin-top: 25px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+        }
+
+        .hero-description strong {
+            color: var(--ink);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+
+            margin-top: 34px;
+        }
+
+        .btn {
+            min-height: 48px;
+
+            padding: 0 21px;
+
+            border-radius: 999px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--burgundy);
+            color: white;
+
+            box-shadow: 0 10px 25px rgba(107, 48, 69, 0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(107, 48, 69, 0.24);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--line);
+            background: white;
+            color: var(--ink);
+        }
+
+        .btn-outline:hover {
+            transform: translateY(-2px);
+            border-color: var(--pink);
+        }
+
+        .mindset-line {
+            margin-top: 35px;
+
+            font-family: "Caveat", cursive;
+
+            color: var(--plum);
+
+            font-size: 21px;
+        }
+
+
+        /* =========================================================
+           HERO PHOTO
+        ========================================================= */
+
+        .hero-visual {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-photo {
+            position: relative;
+
+            width: min(430px, 100%);
+            aspect-ratio: 0.78;
+
+            padding: 10px;
+
+            background: white;
+
+            border: 1px solid var(--line);
+
+            box-shadow: var(--shadow);
+
+            transform: rotate(1.2deg);
+        }
+
+        .hero-photo::before {
+            content: "";
+
+            position: absolute;
+            inset: -12px;
+
+            border: 1px dashed var(--pink);
+
+            pointer-events: none;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            background: var(--soft-pink);
+        }
+
+        .photo-label {
+            position: absolute;
+
+            left: -30px;
+            bottom: 35px;
+
+            padding: 13px 17px;
+
+            background: var(--burgundy);
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+
+            box-shadow: 0 12px 30px rgba(50, 30, 40, 0.16);
+        }
+
+        .photo-label span:first-child {
+            font-family: "Playfair Display", serif;
+            font-size: 18px;
+        }
+
+        .photo-label span:last-child {
+            margin-top: 2px;
+
+            font-size: 8px;
+            letter-spacing: 0.16em;
+            opacity: 0.75;
+        }
+
+        .hero-note {
+            position: absolute;
+
+            right: -35px;
+            top: 25px;
+
+            padding: 14px 18px;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            border: 1px solid var(--line);
+
+            font-family: "Caveat", cursive;
+            font-size: 19px;
+
+            color: var(--plum);
+
+            transform: rotate(5deg);
+        }
+
+        /* =========================================================
+        ABOUT — INTERACTIVE COLOR PALETTE
+        ========================================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            margin-top: 55px;
+        }
+
+        .about-number {
+            font-family: "Playfair Display", serif;
+            font-size: 110px;
+            line-height: 0.8;
+            color: var(--soft-lavender);
+        }
+
+        /* Main interactive area */
+        .about-content {
+            position: relative;
+        }
+
+        /* Palette */
+        .about-palette {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 38px;
+        }
+
+        .palette-button {
+            width: 52px;
+            height: 52px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .palette-button:hover {
+            transform: translateY(-4px);
+        }
+
+        .palette-button.active {
+            transform: scale(1.12);
+            border-color: var(--ink);
+            box-shadow:
+                0 0 0 5px var(--bg),
+                0 0 0 6px var(--ink);
+        }
+
+        /* Palette colors */
+        .palette-testing {
+            background: var(--burgundy);
+        }
+
+        .palette-details {
+            background: var(--lavender);
+        }
+
+        .palette-fashion {
+            background: var(--pink);
+        }
+
+        .palette-mindset {
+            background: var(--plum);
+        }
+
+        /* Small number inside each color */
+        .palette-button span {
+            position: absolute;
+            bottom: -23px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        /* Active section label */
+        .about-topic {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+
+            color: var(--burgundy);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .about-topic::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        /* Story */
+        .about-story {
+            font-size: 18px;
+            min-height: 300px;
+        }
+
+        .about-story p + p {
+            margin-top: 22px;
+        }
+
+        .about-story strong {
+            color: var(--burgundy);
+        }
+
+        /* Smooth content switching */
+        .about-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .about-panel.active {
+            display: block;
+            animation: aboutFade 0.35s ease forwards;
+        }
+
+        @keyframes aboutFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Small instruction */
+        .palette-hint {
+            margin-top: 30px;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 700px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-number {
+                font-size: 80px;
+            }
+
+            .about-palette {
+                gap: 12px;
+                margin-bottom: 35px;
+            }
+
+            .palette-button {
+                width: 44px;
+                height: 44px;
+            }
+
+            .about-story {
+                font-size: 16px;
+            }
+
+        }
+        /* =========================================================
+           MINDSET
+        ========================================================= */
+
+        .mindset-section {
+            background: var(--surface-soft);
+        }
+
+        .mindset-flow {
+            margin-top: 55px;
+
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+
+            gap: 10px;
+        }
+
+        .mindset-step {
+            min-height: 155px;
+
+            padding: 20px;
+
+            background: white;
+
+            border: 1px solid var(--line);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .mindset-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            font-size: 11px;
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        .mindset-step h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 21px;
+            line-height: 1.15;
+        }
+
+        .mindset-step p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           FASHION × TESTING
+        ========================================================= */
+
+        .fashion-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            align-items: end;
+        }
+
+        .fashion-note {
+            max-width: 350px;
+
+            font-family: "Caveat", cursive;
+            font-size: 24px;
+
+            color: var(--plum);
+
+            text-align: right;
+        }
+
+        .fashion-grid {
+            margin-top: 55px;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .fashion-card {
+            padding: 32px 22px;
+
+            border-right: 1px solid var(--line);
+
+            min-height: 230px;
+        }
+
+        .fashion-card:last-child {
+            border-right: none;
+        }
+
+        .fashion-number {
+            width: 44px;
+            height: 44px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--line);
+            border-radius: 50%;
+
+            font-family: "Playfair Display", serif;
+            font-size: 14px;
+
+            color: var(--burgundy);
+
+            margin-bottom: 25px;
+
+            transition: all 0.25s ease;
+        }
+
+        .fashion-card:hover .fashion-number {
+            background: var(--burgundy);
+            color: #ffffff;
+            border-color: var(--burgundy);
+        }
+
+        .fashion-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 23px;
+        }
+
+        .fashion-card p {
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects {
+            background: var(--surface-soft);
+        }
+
+        .project-list {
+            margin-top: 60px;
+
+            display: grid;
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+
+            border: 1px solid var(--line);
+
+            padding: 38px;
+
+            display: grid;
+            grid-template-columns: 0.25fr 1fr 0.25fr;
+
+            gap: 35px;
+
+            align-items: start;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-index {
+            color: var(--pink);
+
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+        }
+
+        .project-title {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(27px, 3vw, 38px);
+            line-height: 1.12;
+        }
+
+        .project-subtitle {
+            margin-top: 8px;
+
+            color: var(--burgundy);
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .project-description {
+            margin-top: 20px;
+
+            max-width: 700px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .project-points {
+            margin-top: 22px;
+
+            display: grid;
+            gap: 9px;
+        }
+
+        .project-point {
+            display: flex;
+            gap: 10px;
+
+            font-size: 13px;
+        }
+
+        .project-point::before {
+            content: "—";
+            color: var(--pink);
+        }
+
+        .project-tags {
+            margin-top: 25px;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+
+            border-radius: 999px;
+
+            background: var(--soft-lavender);
+
+            color: var(--plum);
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .project-link {
+            justify-self: end;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            color: var(--burgundy);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .project-link:hover {
+            color: var(--pink);
+        }
+
+
+        /* =========================================================
+           EVIDENCE
+        ========================================================= */
+
+        .evidence-grid {
+            margin-top: 55px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .evidence {
+            padding: 35px 25px;
+
+            border-right: 1px solid var(--line);
+        }
+
+        .evidence:last-child {
+            border-right: none;
+        }
+
+        .evidence strong {
+            display: block;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 42px;
+
+            color: var(--burgundy);
+        }
+
+        .evidence span {
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills-grid {
+            margin-top: 55px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 28px;
+
+            background: white;
+
+            border: 1px solid var(--line);
+        }
+
+        .skill-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+        }
+
+        .skill-list {
+            margin-top: 18px;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill {
+            padding: 7px 10px;
+
+            border: 1px solid var(--line);
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            background: var(--bg);
+        }
+
+        /* =========================================================
+        EDUCATION
+        ========================================================= */
+
+        .education-layout {
+            display: grid;
+            grid-template-columns: 0.35fr 1.65fr;
+            gap: 60px;
+            align-items: center;
+
+            margin-top: 45px;
+        }
+
+        .education-number {
+            font-family: "Playfair Display", serif;
+            font-size: 110px;
+            line-height: 0.8;
+            color: var(--soft-lavender);
+        }
+
+        .education-item {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            padding: 35px 0;
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .education-logo {
+            width: 82px;
+            height: 82px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
+            border-radius: 50%;
+        }
+
+        .education-logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .education-content h3 {
+            margin: 0;
+
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 500;
+
+            color: var(--ink);
+        }
+
+        .education-degree {
+            margin-top: 10px;
+
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        .education-gpa {
+            margin-top: 8px;
+
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .education-gpa strong {
+            color: var(--burgundy);
+            font-weight: 600;
+        }
+        /* =========================================================
+           FINAL CTA
+        ========================================================= */
+
+        .final-section {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .final-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 75px 65px;
+
+            background: var(--burgundy);
+            color: white;
+
+            text-align: center;
+        }
+
+        .final-card::before,
+        .final-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border: 1px solid rgba(255,255,255,0.16);
+
+            border-radius: 50%;
+        }
+
+        .final-card::before {
+            left: -80px;
+            top: -80px;
+        }
+
+        .final-card::after {
+            right: -80px;
+            bottom: -80px;
+        }
+
+        .final-card h2 {
+            position: relative;
+            z-index: 1;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(38px, 5vw, 62px);
+
+            line-height: 1.05;
+        }
+
+        .final-card p {
+            position: relative;
+            z-index: 1;
+
+            max-width: 600px;
+
+            margin: 20px auto 0;
+
+            color: rgba(255,255,255,0.78);
+        }
+
+        .final-card .btn {
+            position: relative;
+            z-index: 1;
+
+            margin-top: 30px;
+
+            background: white;
+            color: var(--burgundy);
+        }
+
+        /* =========================================================
+        CONTACT
+        ========================================================= */
+
+            .contact-grid {
+                margin-top: 55px;
+
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+
+                gap: 15px;
+            }
+
+            .contact-card {
+                padding: 25px;
+
+                background: var(--surface);
+
+                border: 1px solid var(--line);
+
+                text-decoration: none;
+                color: var(--ink);
+
+                transition:
+                    transform 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-5px);
+
+                border-color: var(--pink);
+
+                box-shadow: 0 15px 35px rgba(107, 48, 69, 0.08);
+            }
+
+
+            /* ICON BOX */
+
+            .contact-icon {
+                width: 46px;
+                height: 46px;
+
+                display: grid;
+                place-items: center;
+
+                background: var(--soft-lavender);
+
+                color: var(--burgundy);
+
+                border: 1px solid transparent;
+
+                border-radius: 12px;
+
+                margin-bottom: 22px;
+
+                transition:
+                    background 0.25s ease,
+                    color 0.25s ease,
+                    border-color 0.25s ease,
+                    transform 0.25s ease;
+            }
+
+
+            /* ICON ITSELF */
+
+            .contact-icon .icon { 
+                width: 21px; 
+                height: 21px; 
+                stroke: currentColor; 
+                fill: none; 
+                stroke-width: 1.8; 
+                stroke-linecap: round; 
+                stroke-linejoin: round; 
+                transition: transform 0.25s ease, color 0.25s ease; 
+            } 
+            .contact-card:hover 
+            .contact-icon .icon { transform: scale(1.08); }
+
+
+
+            /* HOVER */
+
+            .contact-card:hover .contact-icon {
+                background: var(--burgundy);
+
+                color: white;
+
+                border-color: var(--burgundy);
+
+                transform: translateY(-2px);
+            }
+
+            .contact-card:hover .contact-icon .icon {
+                transform: scale(1.08);
+            }
+
+
+            /* LABEL */
+
+            .contact-card small {
+                display: block;
+
+                color: var(--muted);
+
+                font-size: 10px;
+                font-weight: 700;
+
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+
+            /* CONTACT TEXT */
+
+            .contact-card span {
+                display: block;
+
+                margin-top: 7px;
+
+                font-size: 13px;
+
+                word-break: break-word;
+
+                color: var(--ink);
+            }
+
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 35px 0;
+
+            border-top: 1px solid var(--line);
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-signature {
+            font-family: "Caveat", cursive;
+
+            color: var(--burgundy);
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                gap: 60px;
+
+                min-height: auto;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-photo {
+                width: min(390px, 90%);
+            }
+
+            .mindset-flow {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .fashion-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fashion-card:nth-child(2),
+            .fashion-card:nth-child(4) {
+                border-right: none;
+            }
+
+            .fashion-card:nth-child(-n+3) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .project-link {
+                justify-self: start;
+            }
+
+            .evidence-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .evidence:nth-child(2) {
+                border-right: none;
+            }
+
+            .evidence:nth-child(-n+2) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nav-inner {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .hero h1 {
+                max-width: 620px;
+
+                font-family: "Playfair Display", serif;
+
+                font-size: clamp(42px, 5.2vw, 68px);
+                line-height: 0.98;
+
+                letter-spacing: -0.04em;
+            }
+
+            .hero-role {
+                font-size: 34px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-note {
+                right: -5px;
+                top: 15px;
+            }
+
+            .photo-label {
+                left: -5px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-number {
+                font-size: 80px;
+            }
+
+            .mindset-flow {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .fashion-header {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .fashion-note {
+                text-align: left;
+            }
+
+            .fashion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fashion-card,
+            .fashion-card:nth-child(2),
+            .fashion-card:nth-child(4) {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .fashion-card:last-child {
+                border-bottom: none;
+            }
+
+            .project-card {
+                padding: 27px;
+            }
+
+            .evidence-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 30px;
+            }
+
+            .cert-list {
+                grid-template-columns: 1fr;
+            }
+
+            .final-card {
+                padding: 55px 25px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+
+        @media (max-width: 430px) {
+
+            .mindset-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-photo {
+                width: 90%;
+            }
+
+            .hero-note {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =============================================================
+    SVG SPRITE
+============================================================= -->
+
+<svg width="0" height="0" style="position:absolute">
+
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h13"></path>
+        <path d="m13 6 6 6-6 6"></path>
+    </symbol>
+
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3.5 7.5 12 13l8.5-5.5"></path>
+    </symbol>
+
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+        <path d="M6 3h4l2 5-2.5 1.7a15 15 0 0 0 4.8 4.8L16 12l5 2v4c0 1.1-.9 2-2 2C10.7 20 4 13.3 4 5a2 2 0 0 1 2-2Z"></path>
+    </symbol>
+
+    <symbol id="icon-github" viewBox="0 0 24 24">
+        <path d="M15 22v-4c0-1.4-.5-2.2-1.4-2.7 4.6-.5 6.9-2.3 6.9-6.7 0-1.3-.5-2.5-1.4-3.5.1-.3.6-1.7-.1-3.4 0 0-1.1-.4-3.6 1.3a12.5 12.5 0 0 0-6.5 0C6.4 1.3 5.3 1.7 5.3 1.7c-.7 1.7-.2 3.1-.1 3.4A5 5 0 0 0 3.8 8.6c0 4.4 2.3 6.2 6.9 6.7-.9.5-1.4 1.3-1.4 2.7v4"></path>
+    </symbol>
+
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+
+        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+
+        <path d="M8 10v6"></path>
+
+        <path d="M8 7.5v.1"></path>
+
+        <path d="M12 16v-6"></path>
+
+        <path d="M12 13.2c0-1.8 1.1-3.2 2.8-3.2
+                1.6 0 2.2 1.1 2.2 3.1V16"></path>
+
+    </symbol>
+
+    <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6"></path>
+    </symbol>
+
+    <symbol id="icon-bug" viewBox="0 0 24 24">
+        <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+        <path d="M8 10h8v5a4 4 0 0 1-8 0v-5Z"></path>
+        <path d="M5 12h3M16 12h3M5 17h3M16 17h3"></path>
+        <path d="M12 8v10"></path>
+    </symbol>
+
+    <symbol id="icon-code" viewBox="0 0 24 24">
+        <path d="m8 9-4 3 4 3"></path>
+        <path d="m16 9 4 3-4 3"></path>
+        <path d="m14 5-4 14"></path>
+    </symbol>
+
+    <symbol id="icon-eye" viewBox="0 0 24 24">
+        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+        <circle cx="12" cy="12" r="2.5"></circle>
+    </symbol>
+
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 20 6v5c0 5-3.2 8.5-8 10-4.8-1.5-8-5-8-10V6l8-3Z"></path>
+        <path d="m8 12 2.5 2.5L16 9"></path>
+    </symbol>
+
+</svg>
+
+
+<!-- =============================================================
+     NAVBAR
+============================================================= -->
+
+<header class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="#home" class="brand">
+
+            <span class="brand-mark">
+                TQ
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#about">About</a>
+
+            <a href="#mindset">Mindset</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="assets/ToqaGamalMohamedCV.pdf" target="_blank" rel="noopener"> Resume </a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =============================================================
+     HERO
+============================================================= -->
+
+<section class="hero container" id="home">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            Computer & Systems Engineering
+
+        </div>
+
+
+        <h1>
+            Toqa Gamal Mohamed
+        </h1>
+
+
+        <div class="hero-role">
+
+            <strong>Software</strong> /
+            <strong>Hardware</strong>
+            Tester
+
+        </div>
+
+
+        <p class="hero-description">
+
+            I test systems with the same eye I use to notice
+            <strong>details, patterns, and things that don't fit.</strong>
+
+            My focus is turning requirements into reliable,
+            verified behavior.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a href="#projects" class="btn btn-primary">
+
+                View My Work
+
+                <svg class="icon">
+                    <use href="#icon-arrow"></use>
+                </svg>
+
+            </a>
+
+
+            <a href="#contact" class="btn btn-outline">
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+
+        <p class="mindset-line">
+
+            Find the bug. Understand why. Verify the fix.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- PHOTO -->
+
+    <div class="hero-visual">
+
+        <div class="hero-photo">
+
+            <!--
+                PUT YOUR PHOTO HERE:
+                assets/toqa.jpg
+            -->
+
+            <img
+                src="assets/toqa.jpg"
+                alt="Toqa Gamal Mohamed"
+                onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg,#f5e9ee,#f0ecf7)'"
+            >
+
+
+            <div class="photo-label">
+
+                <span>TQ</span>
+
+                <span>TEST • VERIFY • REFINE</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-note">
+
+            Details matter.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =============================================================
+    ABOUT
+============================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-label">
+            01 — About Me
+        </div>
+
+
+        <h2 class="section-title">
+            I like understanding
+            why something goes wrong.
+        </h2>
+
+
+        <div class="about-grid">
+
+        <div>
+            <div class="about-number">
+                01
+            </div>
+        </div>
+
+            <div class="about-content">
+
+                <!-- COLOR PALETTE -->
+                <div class="about-palette">
+
+                    <button
+                        class="palette-button palette-testing active"
+                        data-panel="testing"
+                        aria-label="Testing and Verification"
+                        type="button"
+                    >
+                        <span>01</span>
+                    </button>
+
+                    <button
+                        class="palette-button palette-details"
+                        data-panel="details"
+                        aria-label="Attention to Detail"
+                        type="button"
+                    >
+                        <span>02</span>
+                    </button>
+
+                    <button
+                        class="palette-button palette-fashion"
+                        data-panel="fashion"
+                        aria-label="Fashion and Design"
+                        type="button"
+                    >
+                        <span>03</span>
+                    </button>
+
+                    <button
+                        class="palette-button palette-mindset"
+                        data-panel="mindset"
+                        aria-label="Engineering Mindset"
+                        type="button"
+                    >
+                        <span>04</span>
+                    </button>
+
+                </div>
+
+
+                <!-- ABOUT CONTENT -->
+
+                <div class="about-story">
+
+                    <!-- 01 -->
+                    <div class="about-panel active" data-content="testing">
+
+                        <div class="about-topic">
+                            Testing & Verification
+                        </div>
+
+                        <p>
+                            What I enjoy most about Computer Engineering
+                            is not only building a system — it's
+                            <strong>checking whether it actually behaves
+                            the way it was supposed to.</strong>
+                        </p>
+
+                        <p>
+                            I discovered that I naturally enjoy the
+                            testing side of engineering: reading requirements,
+                            creating scenarios, exploring edge cases,
+                            finding bugs, and then asking
+                            <strong>why that bug happened.</strong>
+                        </p>
+
+                    </div>
+
+
+                    <!-- 02 -->
+                    <div class="about-panel" data-content="details">
+
+                        <div class="about-topic">
+                            Attention to Detail
+                        </div>
+
+                        <p>
+                            I naturally pay attention to the small things
+                            that can easily be overlooked.
+                        </p>
+
+                        <p>
+                            In testing, that means looking beyond the happy
+                            path, checking boundaries, exploring unexpected
+                            scenarios, and noticing
+                            <strong>things that don't quite fit.</strong>
+                        </p>
+
+                        <p>
+                            For me, a detail is not just a small part of
+                            the system — it can be the clue that explains
+                            a much bigger problem.
+                        </p>
+
+                    </div>
+
+
+                    <!-- 03 -->
+                    <div class="about-panel" data-content="fashion">
+
+                        <div class="about-topic">
+                            Fashion & Design
+                        </div>
+
+                        <p>
+                            I find a similar mindset in something else I
+                            genuinely love:
+                            <strong>fashion and design.</strong>
+                        </p>
+
+                        <p>
+                            I enjoy exploring designs and paying attention
+                            to details, patterns, proportions, materials,
+                            and how every element fits together.
+                        </p>
+
+                        <p>
+                            Whether I'm looking at a system or a design,
+                            I enjoy understanding
+                            <strong>why every part is there and whether
+                            everything fits together.</strong>
+                        </p>
+
+                    </div>
+
+
+                    <!-- 04 -->
+                    <div class="about-panel" data-content="mindset">
+
+                        <div class="about-topic">
+                            My Engineering Mindset
+                        </div>
+
+                        <p>
+                            For me, <strong>verification</strong> is more
+                            than saying "it works."
+                        </p>
+
+                        <p>
+                            It means checking that the system matches its
+                            requirements and continues to behave correctly
+                            when the scenario changes.
+                        </p>
+
+                        <p>
+                            That is the mindset I want to bring to every
+                            project:
+                            <strong>understand, question, investigate,
+                            and verify.</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="palette-hint">
+                    Choose a color to explore another part of my story.
+                </div>
+
+            </div>
+
+        </div>
+
+</section>
+
+
+
+<!-- =============================================================
+     TESTING MINDSET
+============================================================= -->
+
+<section class="mindset-section" id="mindset">
+
+    <div class="container">
+
+        <div class="section-label">
+            02 — Testing Mindset
+        </div>
+
+
+        <h2 class="section-title">
+            My way of thinking
+            through a system.
+        </h2>
+
+
+        <p class="section-intro">
+
+            I don't stop at the first successful scenario.
+            I want to understand what happens next.
+
+        </p>
+
+
+        <div class="mindset-flow">
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">01</span>
+
+                <h3>Happy Scenario</h3>
+
+                <p>
+                    Start with the expected flow.
+                </p>
+
+            </div>
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">02</span>
+
+                <h3>Understand</h3>
+
+                <p>
+                    Define what the system should do.
+                </p>
+
+            </div>
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">03</span>
+
+                <h3>Explore</h3>
+
+                <p>
+                    Try boundaries and unusual cases.
+                </p>
+
+            </div>
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">04</span>
+
+                <h3>Find Bugs</h3>
+
+                <p>
+                    Identify behavior that doesn't fit.
+                </p>
+
+            </div>
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">05</span>
+
+                <h3>Investigate</h3>
+
+                <p>
+                    Understand where and why it happened.
+                </p>
+
+            </div>
+
+
+            <div class="mindset-step">
+
+                <span class="step-number">06</span>
+
+                <h3>Verify</h3>
+
+                <p>
+                    Confirm the fix and expected behavior.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     FASHION × TESTING
+============================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="fashion-header">
+
+            <div>
+
+                <div class="section-label">
+                    03 — Fashion × Testing
+                </div>
+
+                <h2 class="section-title">
+                    <div>Different fields.</div>
+                    <div>Same attention to detail.</div>
+                </h2>
+
+            </div>
+
+            <p class="fashion-note">
+                A good design can still have
+                one detail that doesn't fit.
+            </p>
+
+        </div>
+
+
+        <div class="fashion-grid">
+
+            <div class="fashion-card">
+
+                <div class="fashion-number">01</div>
+
+                <h3>Details</h3>
+
+                <p>
+                    Small deviations can reveal
+                    bigger problems.
+                </p>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <div class="fashion-number">02</div>
+
+                <h3>Patterns</h3>
+
+                <p>
+                    Different scenarios expose
+                    different behaviors.
+                </p>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <div class="fashion-number">03</div>
+
+                <h3>Fit</h3>
+
+                <p>
+                    Requirements should match
+                    the final result.
+                </p>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <div class="fashion-number">04</div>
+
+                <h3>Flaws</h3>
+
+                <p>
+                    Find what doesn't behave
+                    the way it should.
+                </p>
+
+            </div>
+
+
+            <div class="fashion-card">
+
+                <div class="fashion-number">05</div>
+
+                <h3>Final Check</h3>
+
+                <p>
+                    Make sure the final result
+                    is ready for the user.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     PROJECTS
+============================================================= -->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <div class="section-label">
+            04 — Selected Work
+        </div>
+
+
+        <h2 class="section-title">
+            Projects where
+            testing became real.
+        </h2>
+
+
+        <p class="section-intro">
+
+            From hardware-level verification to
+            manual software testing.
+
+        </p>
+
+
+        <div class="project-list">
+
+
+            <!-- PROJECT 01 -->
+
+            <article class="project-card">
+
+                <div class="project-index">
+                    PROJECT 01
+                </div>
+
+
+                <div>
+
+                    <h3 class="project-title">
+                        Digital Verification of
+                        PCIe 5.0 Transaction Layer
+                    </h3>
+
+
+                    <div class="project-subtitle">
+                        Graduation Project · Sep 2025 – Jun 2026
+                    </div>
+
+
+                    <p class="project-description">
+
+                        Functional verification of four
+                        PCIe 5.0 Transaction Layer RX modules
+                        within an 8-member team.
+
+                    </p>
+
+
+                    <div class="project-points">
+
+                        <div class="project-point">
+                            Built UVM-based verification environments
+                            using SystemVerilog and QuestaSim.
+                        </div>
+
+                        <div class="project-point">
+                            Designed drivers, monitors, sequences,
+                            scoreboards, reference models and coverage.
+                        </div>
+
+                        <div class="project-point">
+                            Investigated RTL bugs including boundary
+                            errors, missing enable gating, CRC logic
+                            and address reconstruction.
+                        </div>
+
+                        <div class="project-point">
+                            Improved functional and code coverage
+                            to 95%+ across the verified modules.
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag">SystemVerilog</span>
+                        <span class="tag">UVM</span>
+                        <span class="tag">QuestaSim</span>
+                        <span class="tag">Functional Coverage</span>
+                        <span class="tag">RTL Verification</span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/Digital-Verification-of-PCIe"
+                    target="_blank"
+                    class="project-link"
+                >
+
+                    GitHub
+
+                    <svg class="icon">
+                        <use href="#icon-arrow"></use>
+                    </svg>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 02 -->
+
+            <article class="project-card">
+
+                <div class="project-index">
+                    PROJECT 02
+                </div>
+
+
+                <div>
+
+                    <h3 class="project-title">
+                        Healthcare Clinic
+                        Booking Platform
+                    </h3>
+
+
+                    <div class="project-subtitle">
+                        Manual Software Testing · Aug 2026
+                    </div>
+
+
+                    <p class="project-description">
+
+                        A full manual testing project based on
+                        SRS v1.0.0, covering the complete booking
+                        lifecycle from registration to cancellation.
+
+                    </p>
+
+
+                    <div class="project-points">
+
+                        <div class="project-point">
+                            Converted requirements into test cases
+                            and realistic testing scenarios.
+                        </div>
+
+                        <div class="project-point">
+                            Applied Boundary Value Analysis,
+                            Equivalence Partitioning and State
+                            Transition Testing.
+                        </div>
+
+                        <div class="project-point">
+                            Used Decision Tables and Business Rule
+                            Testing for checkout and booking flows.
+                        </div>
+
+                        <div class="project-point">
+                            Reported and tracked bugs using Jira
+                            while validating behavior against the SRS.
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag">Manual Testing</span>
+                        <span class="tag">Test Cases</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">BVA</span>
+                        <span class="tag">EP</span>
+                        <span class="tag">State Transition</span>
+                        <span class="tag">Decision Table</span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/Toqa-Gamal"
+                    target="_blank"
+                    class="project-link"
+                >
+
+                    GitHub
+
+                    <svg class="icon">
+                        <use href="#icon-arrow"></use>
+                    </svg>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =============================================================
+     EVIDENCE
+============================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-label">
+            05 — Evidence
+        </div>
+
+
+        <h2 class="section-title">
+            What the work says.
+        </h2>
+
+
+        <div class="evidence-grid">
+
+
+            <div class="evidence">
+
+                <strong>95%+</strong>
+
+                <span>
+                    Functional & Code Coverage
+                </span>
+
+            </div>
+
+
+            <div class="evidence">
+
+                <strong>4</strong>
+
+                <span>
+                    PCIe 5.0 RX Modules Verified
+                </span>
+
+            </div>
+
+
+            <div class="evidence">
+
+                <strong>8</strong>
+
+                <span>
+                    Members in Graduation Team
+                </span>
+
+            </div>
+
+
+            <div class="evidence">
+
+                <strong>2</strong>
+
+                <span>
+                    Major Testing Case Studies
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =============================================================
+     SKILLS
+============================================================= -->
+
+<section id="skills" class="projects">
+
+    <div class="container">
+
+        <div class="section-label">
+            06 — Technical Skills
+        </div>
+
+
+        <h2 class="section-title">
+            Tools I use to
+            investigate systems.
+        </h2>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card">
+
+                <h3>Testing & Verification</h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">Manual Testing</span>
+                    <span class="skill">Test Cases</span>
+                    <span class="skill">Bug Reporting</span>
+                    <span class="skill">UVM</span>
+                    <span class="skill">Functional Coverage</span>
+                    <span class="skill">RTL Verification</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <h3>Programming</h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">C</span>
+                    <span class="skill">C++</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">Java</span>
+                    <span class="skill">SystemVerilog</span>
+                    <span class="skill">Verilog</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <h3>Tools & Technologies</h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">QuestaSim</span>
+                    <span class="skill">Jira</span>
+                    <span class="skill">Git</span>
+                    <span class="skill">MySQL</span>
+                    <span class="skill">Qt6</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     EDUCATION
+============================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-label">
+            07 — Education
+        </div>
+
+        <div class="education-layout">
+
+            <div class="education-number">
+                07
+            </div>
+
+            <div class="education-item">
+
+                <div class="education-logo">
+                    <img src="assets/ain-shams-logo.png"
+                         alt="Ain Shams University">
+                </div>
+
+                <div class="education-content">
+
+                    <h3>
+                        Faculty of Engineering, Ain Shams University
+                    </h3>
+
+                    <p class="education-degree">
+                        Bachelor's Degree in Computer & Systems Engineering
+                    </p>
+
+                    <p class="education-gpa">
+                        Cumulative GPA:
+                        <strong>Very Good (3.1/4.0)</strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     FINAL CTA
+============================================================= -->
+
+<section class="final-section">
+
+    <div class="container">
+
+        <div class="final-card">
+
+            <h2>
+                You’ve seen the model.
+                Now, let’s see if it fits.
+            </h2>
+
+
+            <p>
+
+                Every project has requirements.
+                My job is to make sure the final result
+                behaves the way it should.
+
+            </p>
+
+
+            <a href="#contact" class="btn">
+
+                Let's Talk
+
+                <svg class="icon">
+                    <use href="#icon-arrow"></use>
+                </svg>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =============================================================
+     CONTACT
+============================================================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-label">
+            08 — Contact
+        </div>
+
+
+        <h2 class="section-title">
+            Have a system
+            that needs testing?
+        </h2>
+
+
+        <p class="section-intro">
+
+            Let's talk about the requirements,
+            the edge cases, and what needs to be verified.
+
+        </p>
+
+
+        <div class="contact-grid">
+
+
+            <!-- EMAIL -->
+
+            <a
+                href="mailto:toqagamal611@gmail.com"
+                class="contact-card"
+            >
+
+                <div class="contact-icon">
+
+                    <svg class="icon">
+                        <use href="#icon-mail"></use>
+                    </svg>
+
+                </div>
+
+                <small>Email</small>
+
+                <span>
+                    toqagamal611@gmail.com
+                </span>
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <a
+                href="https://github.com/Toqa-Gamal"
+                target="_blank"
+                class="contact-card"
+            >
+
+                <div class="contact-icon">
+
+                    <svg class="icon">
+                        <use href="#icon-github"></use>
+                    </svg>
+
+                </div>
+
+                <small>GitHub</small>
+
+                <span>
+                    github.com/Toqa-Gamal
+                </span>
+
+            </a>
+
+
+            <!-- LINKEDIN -->
+
+            <a
+                href="https://www.linkedin.com/in/toqa-gamal-925320287"
+                target="_blank"
+                class="contact-card"
+            >
+
+                <div class="contact-icon">
+
+                    <svg class="icon">
+                        <use href="#icon-linkedin"></use>
+                    </svg>
+
+                </div>
+
+                <small>LinkedIn</small>
+
+                <span>
+                    linkedin.com/in/toqa-gamal
+                </span>
+
+            </a>
+
+
+            <!-- PHONE -->
+
+            <a
+                href="tel:+201096735511"
+                class="contact-card"
+            >
+
+                <div class="contact-icon">
+
+                    <svg class="icon">
+                        <use href="#icon-phone"></use>
+                    </svg>
+
+                </div>
+
+                <small>Phone</small>
+
+                <span>
+                    +20 1096735511
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =============================================================
+     FOOTER
+============================================================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <span>
+            © 2026 Toqa Gamal Mohamed
+        </span>
+
+
+        <span class="footer-signature">
+            Test with intention.
+        </span>
+
+    </div>
+
+</footer>
+
+<script>
+    const paletteButtons = document.querySelectorAll(".palette-button");
+    const aboutPanels = document.querySelectorAll(".about-panel");
+
+    paletteButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const selectedPanel = button.dataset.panel;
+
+            /* Remove active state from colors */
+            paletteButtons.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            /* Activate selected color */
+            button.classList.add("active");
+
+            /* Hide all content */
+            aboutPanels.forEach(panel => {
+                panel.classList.remove("active");
+            });
+
+            /* Show selected content */
+            const targetPanel = document.querySelector(
+                `.about-panel[data-content="${selectedPanel}"]`
+            );
+
+            if (targetPanel) {
+                targetPanel.classList.add("active");
+            }
+
+        });
+
+    });
+</script>
+</body>
+</html>
