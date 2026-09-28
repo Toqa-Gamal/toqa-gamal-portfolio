@@ -1590,7 +1590,70 @@
                 font-size: 16px;
             }
         }
+        
+        /* =========================================================
+        INTERACTIVE EVIDENCE
+        ========================================================= */
 
+        .evidence-button {
+            width: 100%;
+            font: inherit;
+            text-align: left;
+            color: var(--ink);
+            background: white;
+            border: 0;
+            border-right: 1px solid var(--line);
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+
+        .evidence-button:hover,
+        .evidence-button.expanded {
+            background: var(--soft-pink);
+        }
+
+        .evidence-button:focus-visible {
+            outline: 2px solid var(--burgundy);
+            outline-offset: -4px;
+        }
+
+        .evidence-detail {
+            display: none;
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .evidence-button.expanded .evidence-detail {
+            display: block;
+            animation: aboutFade 0.3s ease;
+        }
+
+        .evidence-button small {
+            display: block;
+            margin-top: 12px;
+            color: var(--burgundy);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .evidence-button.expanded small {
+            color: var(--plum);
+        }
+
+        @media (max-width: 950px) {
+            .evidence-button:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .evidence-button {
+                padding: 25px 18px;
+            }
+        }
     </style>
 </head>
 
@@ -2252,365 +2315,345 @@
 
     <div class="container">
 
-        <div class="section-label">
-            04 — Selected Work
-        </div>
-
+        <div class="section-label">04 — Selected Work</div>
 
         <h2 class="section-title">
-            Projects where
-            testing became real.
+            Projects where testing became real.
         </h2>
 
-
         <p class="section-intro">
-
-            From hardware-level verification to
-            manual software testing.
-
+            From manual software testing and automated test cases
+            to hardware-level verification and software development.
         </p>
-
 
         <div class="project-list">
 
-
             <!-- PROJECT 01 -->
-
             <article class="project-card">
 
-                <div class="project-index">
-                    PROJECT 01
-                </div>
-
+                <div class="project-index">PROJECT 01</div>
 
                 <div>
-
                     <h3 class="project-title">
-                        Digital Verification of
-                        PCIe 5.0 Transaction Layer
+                        Healthcare Appointment Booking
                     </h3>
 
-
                     <div class="project-subtitle">
-                        Graduation Project · Sep 2025 – Jun 2026
+                        Manual Testing · DEPI · September 2026
                     </div>
 
-
                     <p class="project-description">
-
-                        Functional verification of four
-                        PCIe 5.0 Transaction Layer RX modules
-                        within an 8-member team.
-
+                        Manual testing of the Patient Details & Promo
+                        Code Engine, based on user story REQ-FUN-05.
                     </p>
 
-
                     <div class="project-points">
+                        <div class="project-point">
+                            Designed and documented 37 test cases in Jira.
+                        </div>
 
                         <div class="project-point">
-                            Built UVM-based verification environments
+                            Tested patient selection, beneficiary name,
+                            phone number validation, and promo code rules.
+                        </div>
+
+                        <div class="project-point">
+                            Applied Boundary Value Analysis and
+                            Equivalence Partitioning for field limits.
+                        </div>
+
+                        <div class="project-point">
+                            Validated promo code length, allowed characters,
+                            trimming, uppercase normalization, and invalid codes.
+                        </div>
+
+                        <div class="project-point">
+                            Executed test cases and reported defects with
+                            reproduction steps, expected vs. actual results,
+                            and severity.
+                        </div>
+
+                        <div class="project-point">
+                            Participated in peer reviews during Agile Sprint 1.
+                        </div>
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Manual Testing</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">37 Test Cases</span>
+                        <span class="tag">BVA</span>
+                        <span class="tag">EP</span>
+                        <span class="tag">Defect Reporting</span>
+                        <span class="tag">Agile</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/Toqa-Gamal"
+                   target="_blank" rel="noopener"
+                   class="project-link">
+                    GitHub Profile
+                    <svg class="icon"><use href="#icon-arrow"></use></svg>
+                </a>
+
+            </article>
+
+
+            <!-- PROJECT 02 -->
+            <article class="project-card">
+
+                <div class="project-index">PROJECT 02</div>
+
+                <div>
+                    <h3 class="project-title">
+                        Movie Recommendation System
+                    </h3>
+
+                    <div class="project-subtitle">
+                        Software Testing · Java & JUnit 5 · Spring 2025
+                    </div>
+
+                    <p class="project-description">
+                        Black-box testing of a Java-based movie
+                        recommendation system, focusing on input
+                        validation, parsing, and recommendation logic.
+                    </p>
+
+                    <div class="project-points">
+                        <div class="project-point">
+                            Designed and executed 350+ test cases using JUnit 5.
+                        </div>
+
+                        <div class="project-point">
+                            Applied Boundary Value Analysis and
+                            Equivalence Class Partitioning.
+                        </div>
+
+                        <div class="project-point">
+                            Tested negative scenarios and invalid inputs.
+                        </div>
+
+                        <div class="project-point">
+                            Used Decision Table Testing to validate
+                            combinations of conditions and expected outcomes.
+                        </div>
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">JUnit 5</span>
+                        <span class="tag">350+ Test Cases</span>
+                        <span class="tag">Black-box Testing</span>
+                        <span class="tag">BVA</span>
+                        <span class="tag">ECP</span>
+                        <span class="tag">Decision Table</span>
+                    </div>
+                </div>
+
+                <a href="https://codeberg.org/KhalidAlansary/debugs-bunny.git"
+                   target="_blank" rel="noopener"
+                   class="project-link">
+                    Codeberg Repository
+                    <svg class="icon"><use href="#icon-arrow"></use></svg>
+                </a>
+
+            </article>
+
+
+            <!-- PROJECT 03 -->
+            <article class="project-card">
+
+                <div class="project-index">PROJECT 03</div>
+
+                <div>
+                    <h3 class="project-title">
+                        Digital Verification of PCIe 5.0 Transaction Layer
+                    </h3>
+
+                    <div class="project-subtitle">
+                        Graduation Project · ASU · September 2025 – June 2026
+                    </div>
+
+                    <p class="project-description">
+                        Functional verification of four PCIe 5.0
+                        Transaction Layer RX modules within an
+                        8-member graduation team.
+                    </p>
+
+                    <div class="project-points">
+                        <div class="project-point">
+                            Developed UVM-based verification environments
                             using SystemVerilog and QuestaSim.
                         </div>
 
                         <div class="project-point">
-                            Designed drivers, monitors, sequences,
-                            scoreboards, reference models and coverage.
+                            Worked with drivers, monitors, sequences,
+                            scoreboards, reference models, and coverage.
                         </div>
 
                         <div class="project-point">
-                            Investigated RTL bugs including boundary
-                            errors, missing enable gating, CRC logic
-                            and address reconstruction.
+                            Investigated RTL issues involving off-by-one
+                            errors, missing enable gating, BAR address
+                            reconstruction, and CRC complement logic.
                         </div>
 
                         <div class="project-point">
-                            Improved functional and code coverage
-                            to 95%+ across the verified modules.
+                            Achieved 95%+ functional and code coverage
+                            across the four verified modules.
                         </div>
-
                     </div>
 
-
                     <div class="project-tags">
-
                         <span class="tag">SystemVerilog</span>
                         <span class="tag">UVM</span>
                         <span class="tag">QuestaSim</span>
-                        <span class="tag">Functional Coverage</span>
                         <span class="tag">RTL Verification</span>
-
+                        <span class="tag">Scoreboard</span>
+                        <span class="tag">Coverage</span>
                     </div>
-
                 </div>
 
-
-                <a
-                    href="https://github.com/Digital-Verification-of-PCIe"
-                    target="_blank"
-                    class="project-link"
-                >
-
+                <a href="https://github.com/Digital-Verification-of-PCIe"
+                   target="_blank" rel="noopener"
+                   class="project-link">
                     GitHub
-
-                    <svg class="icon">
-                        <use href="#icon-arrow"></use>
-                    </svg>
-
+                    <svg class="icon"><use href="#icon-arrow"></use></svg>
                 </a>
 
             </article>
 
 
-
-            <!-- PROJECT 02 -->
-
+            <!-- PROJECT 04 -->
             <article class="project-card">
 
-                <div class="project-index">
-                    PROJECT 02
-                </div>
-
+                <div class="project-index">PROJECT 04</div>
 
                 <div>
-
                     <h3 class="project-title">
-                        Healthcare Clinic
-                        Booking Platform
+                        Online Restaurant Management System
                     </h3>
 
-
                     <div class="project-subtitle">
-                        Manual Software Testing · Aug 2026
+                        ITI Full Stack PHP · June–July 2025
                     </div>
-
 
                     <p class="project-description">
-
-                        A full manual testing project based on
-                        SRS v1.0.0, covering the complete booking
-                        lifecycle from registration to cancellation.
-
+                        A web-based restaurant management system
+                        developed as a final project using PHP,
+                        MySQL, and frontend technologies.
                     </p>
 
-
                     <div class="project-points">
-
                         <div class="project-point">
-                            Converted requirements into test cases
-                            and realistic testing scenarios.
+                            Designed a relational database using MySQL.
                         </div>
 
                         <div class="project-point">
-                            Applied Boundary Value Analysis,
-                            Equivalence Partitioning and State
-                            Transition Testing.
+                            Implemented menu browsing, cart, checkout,
+                            order, and reservation workflows.
                         </div>
 
                         <div class="project-point">
-                            Used Decision Tables and Business Rule
-                            Testing for checkout and booking flows.
+                            Developed an admin dashboard for management tasks.
                         </div>
 
                         <div class="project-point">
-                            Reported and tracked bugs using Jira
-                            while validating behavior against the SRS.
+                            Used JavaScript for cart updates and form validation.
                         </div>
-
                     </div>
-
 
                     <div class="project-tags">
-
-                        <span class="tag">Manual Testing</span>
-                        <span class="tag">Test Cases</span>
-                        <span class="tag">Jira</span>
-                        <span class="tag">BVA</span>
-                        <span class="tag">EP</span>
-                        <span class="tag">State Transition</span>
-                        <span class="tag">Decision Table</span>
-
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">JavaScript</span>
                     </div>
-
                 </div>
 
-
-                <a
-                    href="https://github.com/Toqa-Gamal"
-                    target="_blank"
-                    class="project-link"
-                >
-
-                    GitHub
-
-                    <svg class="icon">
-                        <use href="#icon-arrow"></use>
-                    </svg>
-
+                <a href="https://github.com/MariamAmrE/onlineCoursesSystem.git"
+                   target="_blank" rel="noopener"
+                   class="project-link">
+                    GitHub Profile
+                    <svg class="icon"><use href="#icon-arrow"></use></svg>
                 </a>
 
             </article>
 
         </div>
-
     </div>
-
 </section>
-
-
-
 <!-- =============================================================
      EVIDENCE
 ============================================================= -->
 
-<section>
+<section id="evidence">
 
     <div class="container">
 
-        <div class="section-label">
-            05 — Evidence
-        </div>
-
+        <div class="section-label">05 — Evidence</div>
 
         <h2 class="section-title">
             What the work says.
         </h2>
 
+        <p class="section-intro">
+            Measurable work across software testing and
+            digital verification.
+        </p>
 
         <div class="evidence-grid">
 
+            <button class="evidence evidence-button" type="button"
+                    aria-expanded="false">
+                <strong>350+</strong>
+                <span>JUnit 5 Test Cases</span>
+                <div class="evidence-detail">
+                    Black-box tests for input validation, parsing,
+                    recommendation logic, negative scenarios,
+                    BVA, ECP, and Decision Tables.
+                </div>
+                <small>Click to explore +</small>
+            </button>
 
-            <div class="evidence">
-
+            <button class="evidence evidence-button" type="button"
+                    aria-expanded="false">
                 <strong>95%+</strong>
+                <span>Functional & Code Coverage</span>
+                <div class="evidence-detail">
+                    Coverage achieved across four PCIe 5.0
+                    Transaction Layer RX verification modules.
+                </div>
+                <small>Click to explore +</small>
+            </button>
 
-                <span>
-                    Functional & Code Coverage
-                </span>
+            <button class="evidence evidence-button" type="button"
+                    aria-expanded="false">
+                <strong>37</strong>
+                <span>Healthcare Test Cases</span>
+                <div class="evidence-detail">
+                    Jira test cases for patient details,
+                    phone validation, and promo code behavior
+                    in REQ-FUN-05.
+                </div>
+                <small>Click to explore +</small>
+            </button>
 
-            </div>
-
-
-            <div class="evidence">
-
+            <button class="evidence evidence-button" type="button"
+                    aria-expanded="false">
                 <strong>4</strong>
-
-                <span>
-                    PCIe 5.0 RX Modules Verified
-                </span>
-
-            </div>
-
-
-            <div class="evidence">
-
-                <strong>8</strong>
-
-                <span>
-                    Members in Graduation Team
-                </span>
-
-            </div>
-
-
-            <div class="evidence">
-
-                <strong>2</strong>
-
-                <span>
-                    Major Testing Case Studies
-                </span>
-
-            </div>
+                <span>PCIe RX Modules Verified</span>
+                <div class="evidence-detail">
+                    Verification work performed as part of
+                    an 8-member graduation project team.
+                </div>
+                <small>Click to explore +</small>
+            </button>
 
         </div>
-
     </div>
-
 </section>
-
-
-
-<!-- =============================================================
-     SKILLS
-============================================================= -->
-
-<section id="skills" class="projects">
-
-    <div class="container">
-
-        <div class="section-label">
-            06 — Technical Skills
-        </div>
-
-
-        <h2 class="section-title">
-            Tools I use to
-            investigate systems.
-        </h2>
-
-
-        <div class="skills-grid">
-
-
-            <div class="skill-card">
-
-                <h3>Testing & Verification</h3>
-
-                <div class="skill-list">
-
-                    <span class="skill">Manual Testing</span>
-                    <span class="skill">Test Cases</span>
-                    <span class="skill">Bug Reporting</span>
-                    <span class="skill">UVM</span>
-                    <span class="skill">Functional Coverage</span>
-                    <span class="skill">RTL Verification</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <h3>Programming</h3>
-
-                <div class="skill-list">
-
-                    <span class="skill">C</span>
-                    <span class="skill">C++</span>
-                    <span class="skill">Python</span>
-                    <span class="skill">Java</span>
-                    <span class="skill">SystemVerilog</span>
-                    <span class="skill">Verilog</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <h3>Tools & Technologies</h3>
-
-                <div class="skill-list">
-
-                    <span class="skill">QuestaSim</span>
-                    <span class="skill">Jira</span>
-                    <span class="skill">Git</span>
-                    <span class="skill">MySQL</span>
-                    <span class="skill">Qt6</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
 <!-- =============================================================
      EDUCATION
 ============================================================= -->
@@ -2899,6 +2942,31 @@
         });
 
     });
+    
+        /* =========================================================
+        INTERACTIVE EVIDENCE
+        ========================================================= */
+
+        const evidenceCards = document.querySelectorAll(".evidence-button");
+
+        evidenceCards.forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                const isExpanded = card.classList.contains("expanded");
+
+                card.classList.toggle("expanded", !isExpanded);
+                card.setAttribute("aria-expanded", String(!isExpanded));
+
+                const hint = card.querySelector("small");
+
+                hint.textContent = isExpanded
+                    ? "Click to explore +"
+                    : "Click to collapse −";
+
+            });
+
+        });
 </script>
 </body>
 </html>
